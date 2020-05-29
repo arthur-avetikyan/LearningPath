@@ -1,0 +1,13 @@
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.exe
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.deps.json
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.runtimeconfig.json
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.runtimeconfig.dev.json
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.dll
+C:\Users\arthu\source\repos\Quiz\Quiz\bin\Debug\netcoreapp3.1\Quiz.pdb
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.csprojAssemblyReference.cache
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.csproj.CoreCompileInputs.cache
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.AssemblyInfoInputs.cache
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.AssemblyInfo.cs
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.dll
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.pdb
+C:\Users\arthu\source\repos\Quiz\Quiz\obj\Debug\netcoreapp3.1\Quiz.genruntimeconfig.cache
