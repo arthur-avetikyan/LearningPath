@@ -16,7 +16,8 @@ namespace Quiz
                         {2,"Everest" },
                         {3,"Manaslu" },
                         {4,"Karjiang" },
-                    }
+                    },
+                    CorrectAnswer = 2
                 },
                 new Question
                 {
@@ -28,7 +29,8 @@ namespace Quiz
                         {2,"Riga" },
                         {3,"Berlin" },
                         {4,"Paris" },
-                    }
+                    },
+                    CorrectAnswer = 4
                 },
                 new Question
                 {
@@ -40,7 +42,8 @@ namespace Quiz
                         {2,"Baikal" },
                         {3,"Sevan" },
                         {4,"Michigan" },
-                    }
+                    },
+                    CorrectAnswer = 1
                 },
                 new Question
                 {
@@ -52,18 +55,10 @@ namespace Quiz
                         {2,"Brazil" },
                         {3,"Greece" },
                         {4,"Italy" },
-                    }
+                    },
+                    CorrectAnswer = 4
                 },
 
-            };
-
-        public static Dictionary<int, int> GetCorrectAnswers() =>
-            new Dictionary<int, int>
-            {
-                {1,2 },
-                {2,4 },
-                {3,1 },
-                {4,4 },
             };
     }
 }

@@ -22,8 +22,8 @@ namespace Quiz
                 }
 
                 int number = 0;
-                bool success = true;
-                while (success)
+                bool success = false;
+                while (!success)
                 {
                     Console.Write("Your answer: ");
                     string answer = Console.ReadLine();
@@ -34,7 +34,7 @@ namespace Quiz
 
             }
 
-            DisplayCorrectAnswersCount(answers);
+            CountCorrectAnswers(answers, questions);
         }
 
         static bool Validate(int number, Dictionary<int, string> options)
@@ -42,26 +42,27 @@ namespace Quiz
             if (!options.ContainsKey(number))
             {
                 Console.WriteLine("Insert valid answer.");
-                return true;
-            }
-            else
-            {
                 return false;
             }
+            return true;
+
         }
 
-        static void DisplayCorrectAnswersCount(int[] answers)
+        static void CountCorrectAnswers(int[] answers, List<Question> questions)
         {
             int count = 0;
-            var correctAnswers = QuizData.GetCorrectAnswers();
             for (int i = 0; i < answers.Length; i++)
             {
-                if (answers[i] == correctAnswers[i + 1])
+                if (answers[i] == questions[i].CorrectAnswer)
                 {
                     count++;
                 }
             }
+            DisplayScore(count);
+        }
 
+        private static void DisplayScore(int count)
+        {
             Console.WriteLine($"{Environment.NewLine}You answered {count} questions correctly.");
         }
     }
