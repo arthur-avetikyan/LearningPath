@@ -1,0 +1,7 @@
+C:\Users\arthu\source\repos\TaskOne\TaskOne\bin\Debug\TaskOne.exe.config
+C:\Users\arthu\source\repos\TaskOne\TaskOne\bin\Debug\TaskOne.exe
+C:\Users\arthu\source\repos\TaskOne\TaskOne\bin\Debug\TaskOne.pdb
+C:\Users\arthu\source\repos\TaskOne\TaskOne\obj\Debug\TaskOne.csproj.CoreCompileInputs.cache
+C:\Users\arthu\source\repos\TaskOne\TaskOne\obj\Debug\TaskOne.exe
+C:\Users\arthu\source\repos\TaskOne\TaskOne\obj\Debug\TaskOne.pdb
+C:\Users\arthu\source\repos\TaskOne\TaskOne\obj\Debug\TaskOne.csprojAssemblyReference.cache
