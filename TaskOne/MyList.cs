@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,65 +8,109 @@ namespace TaskOne
     public class MyList<T> : IEnumerable<T>
     {
         private T[] collection;
-        private int index;
+        private int currentIndex;
 
         public int Length { get; private set; }
 
         public MyList()
         {
-            collection = new T[0];
-            index = -1;
+            collection = new T[16];
+            currentIndex = -1;
             Length = 0;
         }
+
+        public MyList(int length)
+        {
+            collection = new T[length];
+            currentIndex = -1;
+            Length = length;
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 && index >= Length)
+                    throw new IndexOutOfRangeException();
+                return collection[index];
+            }
+            set
+            {
+                if (index < 0 && index >= Length)
+                    throw new IndexOutOfRangeException();
+                collection[index] = value;
+            }
+        }
+
 
         #region Instance Methods
 
         public void Add(T item)
         {
-            var temp = collection;
-            index++;
+            currentIndex++;
             Length++;
-
-            collection = new T[Length];
-            for (int i = 0; i < temp.Length; i++)
+            if (collection.Length < Length)
             {
-                collection[i] = temp[i];
+                var temp = collection;
+                collection = new T[Length + 15];
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    collection[i] = temp[i];
+                }
+                collection[currentIndex] = item;
             }
-            collection[index] = item;
+            else
+            {
+                collection[currentIndex] = item;
+            }
         }
 
         public void AddRange(IEnumerable<T> list)
         {
-            var temp = collection;
-            index += list.Count();
-            Length = index + 1;
+            var itemsToAddCount = list.Count();
+            int openSlots = collection.Length - Length;
 
-            collection = new T[Length];
-
-            for (int i = 0; i < temp.Length; i++)
+            if (openSlots < itemsToAddCount)
             {
-                collection[i] = temp[i];
-            }
+                var temp = collection;
+                var existingItemsCount = Length;
+                int arrayResizeLength = collection.Length;
 
-            int counter = temp.Length;
-            foreach (var item in list)
-            {
-                collection[counter] = item;
-                counter++;
+                int sizeToAdd = (itemsToAddCount - openSlots) / 16;
+                arrayResizeLength += (itemsToAddCount - openSlots) % 16 != 0 ? 16 * (sizeToAdd + 1) : 16 * sizeToAdd;
+
+                collection = new T[arrayResizeLength];
+
+                for (int i = 0; i < existingItemsCount; i++)
+                {
+                    collection[i] = temp[i];
+                }
+
+                int counter = existingItemsCount;
+                foreach (var item in list)
+                {
+                    collection[counter] = item;
+                    counter++;
+                }
             }
+            else
+            {
+                int counter = Length;
+                foreach (var item in list)
+                {
+                    collection[counter] = item;
+                    counter++;
+                }
+            }
+            Length += itemsToAddCount;
+            currentIndex = Length - 1;
         }
 
         public void Remove()
         {
-            var temp = collection;
-            index -= 1;
-            Length = index + 1;
-
-            collection = new T[Length];
-            for (int i = 0; i < Length; i++)
-            {
-                collection[i] = temp[i];
-            }
+            collection[currentIndex] = default;
+            currentIndex -= 1;
+            Length = currentIndex + 1;
         }
 
         public void RemoveItem(T item)
@@ -77,23 +122,16 @@ namespace TaskOne
 
         public void RemoveAtIndex(int itemIndex)
         {
-            if (itemIndex < 0 || itemIndex > index)
+            if (itemIndex < 0 || itemIndex > currentIndex)
                 return;
 
             var temp = collection;
-            index -= 1;
-            Length = index + 1;
-            int y = 0;
+            currentIndex -= 1;
+            Length = currentIndex + 1;
 
-            collection = new T[Length];
-
-            for (int i = 0; i < temp.Length; i++)
+            for (int i = itemIndex; i < temp.Length - 1; i++)
             {
-                if (i != itemIndex)
-                {
-                    collection[y] = temp[i];
-                    y++;
-                }
+                collection[i] = temp[i + 1];
             }
         }
 
@@ -122,10 +160,10 @@ namespace TaskOne
             IComparer<T> comparer = Comparer<T>.Default;
 
             bool isSorted = false;
-            for (int y = 0; y < collection.Length && !isSorted; y++)
+            for (int y = 0; y < Length && !isSorted; y++)
             {
                 isSorted = true;
-                for (int i = 0; i < collection.Length - 1; i++)
+                for (int i = 0; i < Length - 1; i++)
                 {
                     if (comparer.Compare(collection[i], collection[i + 1]) > 0)
                     {
@@ -143,10 +181,10 @@ namespace TaskOne
             IComparer<T> comparer = Comparer<T>.Default;
 
             bool isSorted = false;
-            for (int y = 0; y < collection.Length && !isSorted; y++)
+            for (int y = 0; y < Length && !isSorted; y++)
             {
                 isSorted = true;
-                for (int i = 0; i < collection.Length - 1; i++)
+                for (int i = 0; i < Length - 1; i++)
                 {
                     if (comparer.Compare(collection[i], collection[i + 1]) < 0)
                     {

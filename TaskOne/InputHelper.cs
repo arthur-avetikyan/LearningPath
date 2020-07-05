@@ -7,6 +7,8 @@ namespace TaskOne
         Group = 1,
         Individual = 2
     }
+
+
     public static class InputHelper
     {
         public static void AddNumbersByGroup(MyList<string> inputedList)

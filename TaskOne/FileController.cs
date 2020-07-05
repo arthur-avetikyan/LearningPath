@@ -8,7 +8,7 @@ namespace TaskOne
         const string fileExtension = ".txt";
         readonly string rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        
+
         public string ChooseFolder(string directoryName)
         {
             string createdDirectory = Path.Combine(rootDirectory, directoryName);

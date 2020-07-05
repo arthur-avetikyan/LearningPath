@@ -7,6 +7,7 @@ namespace TaskOne
         static void Main(string[] args)
         {
             MyList<string> inputedList = new MyList<string>();
+            FileController fileController = new FileController();
             InputMethod inputMethod = InputMethod.Group;
 
             Console.WriteLine("Hello User");
@@ -27,8 +28,6 @@ namespace TaskOne
                 default:
                     break;
             }
-
-            FileController fileController = new FileController();
 
             Console.WriteLine($"{Environment.NewLine}Please select folder: ");
             string choosenDirectoryName = Console.ReadLine();
